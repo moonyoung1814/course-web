@@ -14,7 +14,7 @@
             <label class="text-xl">课程</label>
           </div>
           <div>
-            <label class="text-xl">班级</label>
+            <label class="text-xl" @click="skipToClass">班级</label>
           </div>
         </div>
 
@@ -45,13 +45,12 @@
 
         <div class="">
           <input type="text" class="border border-gray-300 placeholder-gray-300 rounded-sm text-black 
-          w-56 h-8 text-center text-sm focus:outline-none focus:border-blue-300 focus:ring-2 shadow" :placeholder=name>
+          w-56 h-8 text-center text-sm focus:outline-none focus:border-blue-300 focus:ring-2 shadow" :placeholder="name">
         </div>
       </div> 
 
       <div class="border border-gray-300 mt-6"></div>   
     </nav>
-    
     <!-- 当前课程 -->
     <div class="mt-8 mx-6 flex flex-row">
       <!-- 左侧标识 -->
@@ -95,7 +94,7 @@
 
       <!-- 右侧标签页 -->
       <div class="flex flex-col ml-16">
-        <div class="flex flex-row space-x-64 font-bold items-center max-w-full">
+        <div class="flex flex-row space-x-64 font-bold items-center max-w-full h-7 mb-1">
           <div class="ml-16">
             <label class="text-lg" @click="clickProject">项目</label>
             <div class="border border-red-500 mt-0.5 max-w-full" v-show="isProject"></div>  
@@ -110,7 +109,7 @@
           </div>
         </div>
         <!-- 项目卡片 -->
-        <div class="border border-gray-200 mt-1"></div>
+        <div class="border border-gray-200 "></div>
         <div class="border border-gray-300 rounded shadow max-w-full mt-1 py-4 px-8" v-show="isProject">
           <div v-for="(item,index) in projectRank" :key="index" class="flex flex-col mb-3">
             <div class="flex flex-row mt-2 items-center">
@@ -195,11 +194,13 @@
 
 <script>
 import axios from 'axios'
+// import Navigation from '../components/navigation.vue'
 export default {
   name: 'index',
+  // components:{Navigation},
   data() {
     return {
-      customer: [],
+      name:"123",
       isProject:true,
       isDocx:false,
       isHeadOver:false,
@@ -242,6 +243,9 @@ export default {
     },
     clickHead:function(){
       this.isHeadOver=!this.isHeadOver;
+    },
+    skipToClass:function(){
+      this.$router.push('class');
     }
   },
 

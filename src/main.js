@@ -42,6 +42,13 @@ export default function createApp () {
         meta: {
           ssr: true
         }
+      },
+      {
+        path: '/class',
+        component: () => import('./views/class.vue'),
+        meta: {
+          ssr: true
+        }
       }
     ]
   })
