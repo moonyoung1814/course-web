@@ -1,25 +1,25 @@
 <template>
     <div>
-        <nav>
+      <nav>
       <div class="flex justify-between items-end">
 
         <p class="text-3xl font-bold tracking-wider">Course</p>
 
         <div class="flex space-x-14">
           <div>
-            <label class="text-xl">首页</label>
+            <label class="text-xl" @click="skipToIndex">首页</label>
           </div>
           <div>
-            <label class="text-xl">课程</label>
+            <label class="text-xl" @click="skipToCourse">课程</label>
           </div>
           <div>
-            <label class="text-xl">班级</label>
+            <label class="text-xl" @click="skipToClass">班级</label>
           </div>
         </div>
 
         <div class="flex space-x-14">
           <!-- inline-block 内联块级元素 -->
-          <div class="relative inline-block" > <!-- @click="clickHead" -->
+          <div class="relative inline-block" @click="clickHead">
             <!-- 鼠标悬停过渡+变换 -->
             <div class="border border-gray-50 rounded-full h-10 w-10 overflow-hidden 
             transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-125" >
@@ -29,7 +29,7 @@
             justify-center z-10 absolute origin-top-right right-0 mt-1 divide-y divide-gray-100" v-show="isHeadOver">
               <div class="flex flex-row self-center">
                 <img src="../assets/人.svg" alt="icon_person" class="w-5">
-                <label class="ml-1 py-2 text-sm text-gray-700" >我的空间</label>
+                <label class="ml-1 py-2 text-sm text-gray-700" @click="skipToPerson">我的空间</label>
               </div>
               <div class="flex flex-row self-center">
                 <img src="../assets/退出.svg" alt="icon_exit" class="w-5">
@@ -56,13 +56,28 @@
 <script>
     export default{
         props:{
-            isHeadOver:Boolean
         },
         data(){
-
+          return{
+            isHeadOver:false
+          }
         },
         methods:{
-
+          clickHead:function(){
+            this.isHeadOver=!this.isHeadOver;
+          },
+          skipToClass:function(){
+            this.$router.push('class');
+          },
+          skipToIndex:function(){
+            this.$router.push('home');
+          },
+          skipToCourse:function(){
+            this.$router.push('course');
+          },
+          skipToPerson:function(){
+            this.$router.push('person');
+          }
         }
     }
 </script>

@@ -38,7 +38,7 @@ export default function createApp () {
       // }
       {
         path: '/',
-        component: () => import('./views/index.vue'),
+        component: () => import('./views/home.vue'),
         meta: {
           ssr: true
         }
@@ -46,6 +46,34 @@ export default function createApp () {
       {
         path: '/class',
         component: () => import('./views/class.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/classList',
+        component: () => import('./views/classList.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/course',
+        component: () => import('./views/course.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/person',
+        component: () => import('./views/person.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/project',
+        component: () => import('./views/project.vue'),
         meta: {
           ssr: true
         }
