@@ -67,16 +67,17 @@
             this.isHeadOver=!this.isHeadOver;
           },
           skipToClass:function(){
-            this.$router.push('class');
+            this.$router.push('/class');
           },
           skipToIndex:function(){
-            this.$router.push('home');
+            this.$router.push('/');
           },
           skipToCourse:function(){
-            this.$router.push('course');
+            this.$router.push('/course');
           },
+          //跳转到外部链接
           skipToPerson:function(){
-            this.$router.push('person');
+             window.location.href = 'http://home.moonyoung.top';
           }
         }
     }

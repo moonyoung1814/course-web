@@ -8,39 +8,18 @@
             <div class="ring-1 rounded shadow px-8 py-4">
                 <p class="text-sm text-gray-700">{{projectIntro}}</p>
             </div>
-            <div class="flex flex-row justify-center space-x-4">
-                <div>
-                    <img src="../assets/head.jpg" alt="head" class="ring-1 shadow w-8 h-8 rounded-full overflow-hidden" 
-                    @mouseenter="onEnterTd(e)" @mouseleave="onLeaveTd(e)">
-                    <div class="ring-1 ring-black ring-opacity-5 rounded-md shadow-lg bg-white flex flex-row
-                    z-10 absolute items-center px-4 py-4 mt-2" v-show="isEnter">
-                        <img src="../assets/head.jpg" alt="头像" class="ring-1 shadow w-10 h-10 rounded-full overflow-hidden">
-                        <div class="flex flex-col ml-4">
-                            <label class="text-xs text-black">张同学</label>
-                            <label class="text-xs text-gray-700">20210415班</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <img src="../assets/head.jpg" alt="head" class="ring-1 shadow w-8 h-8 rounded-full overflow-hidden">
-                <img src="../assets/head.jpg" alt="head" class="ring-1 shadow w-8 h-8 rounded-full overflow-hidden">
-            </div>
+            <head-enter @whichEnter="whichEnter"></head-enter>
             <p class="text-xs text-gray-500">已加入该项目</p>
-            <div class="ring-2 shadow-md rounded-md flex flex-col items-center py-4 px-16 w-full">
-                <ul class="list-disc text-sm text-gray-700 space-y-2 tracking-wider">
-                    <li>{{projectDocx}}&nbsp;&nbsp;........................&nbsp;&nbsp;{{docxTime}}</li>
-                    <li>{{projectDocx}}&nbsp;&nbsp;........................&nbsp;&nbsp;{{docxTime}}</li>
-                    <li>{{projectDocx}}&nbsp;&nbsp;........................&nbsp;&nbsp;{{docxTime}}</li>
-                    <li>{{projectDocx}}&nbsp;&nbsp;........................&nbsp;&nbsp;{{docxTime}}</li>
-                    <li>{{projectDocx}}&nbsp;&nbsp;........................&nbsp;&nbsp;{{docxTime}}</li>
-                </ul>
-            </div>
+            <menu-card :projectDocx="projectDocx" :docxTime="docxTime"></menu-card>
         </div>
     </div>
 </template>
 
 <script>
+import headEnter from '../components/headEnter.vue'
+import MenuCard from './menuCard.vue';
 export default {
+  components: { headEnter, MenuCard },
     data(){
         return{
             projectName:"项目名",
@@ -51,11 +30,8 @@ export default {
         }
     },
     methods:{
-        onEnterTd:function(){
-            this.isEnter=true;
-        },
-        onLeaveTd:function(){
-            this.isEnter=false;
+        whichEnter:function(e){
+            this.isEnter=e;
         }
     }
 }

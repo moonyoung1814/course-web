@@ -40,6 +40,7 @@
                             <p class="text-xs ">{{item.projectDocx}}</p>
                             <p class="text-xs ">{{item.projectDocx}}</p>
                             <p class="text-xs ">{{item.projectDocx}}</p>
+                            <text class="iconfont icon-yiwen"></text>
                         </div>  
                     </div> 
                 </div>

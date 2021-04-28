@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 import Navigation from './components/navigation.vue'
 // import HelloWorld from './components/HelloWorld.vue'
 
