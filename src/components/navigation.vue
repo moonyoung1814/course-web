@@ -23,7 +23,8 @@
             <!-- 鼠标悬停过渡+变换 -->
             <div class="border border-gray-50 rounded-full h-10 w-10 overflow-hidden 
             transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-125" >
-              <img src="../assets/head.jpg" alt="head">
+              <img :src="person.detail.image" alt="head" v-if="isImage == true">
+              <img src="../assets/head.jpg" alt="head" v-else-if="isImage == false">
             </div>
             <div class="ring-1 ring-black ring-opacity-5 rounded-md shadow-lg bg-white w-28 h-28 flex flex-col
             justify-center z-10 absolute origin-top-right right-0 mt-1 divide-y divide-gray-100" v-show="isHeadOver">
@@ -54,12 +55,15 @@
 </template>
 
 <script>
+import axios from "axios"
     export default{
         props:{
         },
         data(){
           return{
-            isHeadOver:false
+            isHeadOver:false,
+            person:[],
+            isImage:false
           }
         },
         methods:{
@@ -79,7 +83,28 @@
           skipToPerson:function(){
              window.location.href = 'http://home.moonyoung.top';
           }
-        }
+        },
+        async created() {
+          //let person = (await axios.get('http://api.moonyoung.top/api/admin/account'))
+          //console.log(person)
+          //this.person = person
+          var token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwidXNlcm5hbWUiOiJ0ZWFjaGVyIiwiaWQiOjEwLCJpYXQiOjE2MTk2MjA4MzksImV4cCI6MTYxOTg4MDAzOX0.ZaAOBzCdt65dguQQKY7Ynvex-XTi5NXLn4nvMUOFwVQ';
+          axios.get(
+          'http://api.moonyoung.top/api/admin/account',
+          {
+            headers:{
+              'Authorization' :'Bearer ' + token
+            }
+          })
+          .then(res => {
+            console.log(res.data.data);
+            this.person = res.data.data;
+            this.isImage = true;
+          })
+          .catch(res =>{
+            console.log(res);
+          })
+  } 
     }
 </script>
 

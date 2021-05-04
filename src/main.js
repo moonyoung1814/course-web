@@ -10,12 +10,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import VueResource from 'vue-resource'
 import "tailwindcss/tailwind.css"
 import "../css/iconfont.css"
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+Vue.use(VueResource);
 
 
 // Export factory function

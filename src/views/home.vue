@@ -31,7 +31,7 @@ import RightCourse from '../components/home/rightCourse.vue'
 import RightRankLabel from '../components/home/rightRankLabel.vue'
 import RightRankCard from '../components/home/rightRankCard.vue'
 import RightQuestion from '../components/home/rightQuestion.vue'
-import {getListAPI,postFormAPI, putSomeAPI, deleteListAPI} from '../utils/api/api'
+import {getListAPI} from '../utils/request'
 export default {
   components: { 
     leftLabel,
@@ -66,45 +66,20 @@ export default {
     }
   },
   created() {
-        //relations连接
-        //let course = (await axios.get('http://api.moonyoung.top/api/common/courseInstance?relations=teacher')).data.data
-        //console.log(course)
-        //this.course = course
-        getListAPI().then(res => {
-          this.course = res
-          console.log(this.course)
-          })
-          .catch(err => {
-            console.log(err)
-          })
+    getListAPI().then(res => {
+        this.course = res.data.data
+        console.log(this.course)
+      })
+      .catch(err => {
+        console.log(err)
+      })
         
   },
   methods:{
     whichClick:function(e){
       this.isClick=e;
-    },
-    //promise调用，链式调用， getList()括号内只接受参数；
-    //get不传参
-    getList() {
-      //getListAPI().then(res => console.log(res)).catch(err => console.log(err))
-      
-    },
-    //post传参
-    postForm(formData) {
-      let data = formData
-      postFormAPI(data).then(res => console.log(res)).catch(err => console.log(err))
-    },
-  },
-  //async await同步调用
-  async postForm(formData) {
-    const postRes = await postFormAPI(formData)
-    const putRes = await putSomeAPI({data: 'putTest'})
-    const deleteRes = await deleteListAPI(formData.name)
-    // 数据处理
-    console.log(postRes);
-    console.log(putRes);
-    console.log(deleteRes);
-  },
+    }
+  }
 }
 </script>
 

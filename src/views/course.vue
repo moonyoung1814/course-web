@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import axios from 'axios'
 // 组件化
 import LabelPage from '../components/labelPage.vue'
 import CourseList from '../components/courseList.vue'
+import {getListAPI} from '../utils/request'
 export default {
     components:{
         LabelPage,
@@ -28,13 +28,15 @@ export default {
             isPractice:""
         }
     },
-    async created() {
-        //relations连接
-        let course = (await axios.get('http://47.94.168.183:7002/api/common/courseInstance?relations=teacher')).data.data
-        console.log(course)
-        this.course = course
+    created() {
+        getListAPI().then(res => {
+            this.course = res.data.data
+            console.log(this.course)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     },
-    
     methods:{
         //父组件收到子组件传的值  
         whichPractice:function(e){
