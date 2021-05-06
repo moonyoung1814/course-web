@@ -4,15 +4,15 @@
             <div class="space-y-16">
                 <div class="h-5"> 
                     <label class="text-lg" @click="clickClassProjects">班级项目</label>
-                    <div class="border border-blue-500 mt-0.5 w-full" v-show="isClick == 1"></div>  
+                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '1' ? 'opacity-100' : 'opacity-0']"></div>  
                 </div>
                 <div class="h-5">
                     <label class="text-lg" @click="clickClassMembers">班级成员</label>
-                    <div class="border border-blue-500 mt-0.5 w-full" v-show="isClick == 2"></div>  
+                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '2' ? 'opacity-100' : 'opacity-0']"></div>  
                 </div>
                 <div class="h-5">
                     <label class="text-lg" @click="clickShareData">共享资料</label>
-                    <div class="border border-blue-500 mt-0.5 w-full" v-show="isClick == 3"></div>
+                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '3' ? 'opacity-100' : 'opacity-0']"></div>
                 </div>
             </div>
         </div>

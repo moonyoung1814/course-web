@@ -2,14 +2,14 @@
   <div>
     <!-- 当前课程 -->
     <div class="mt-8 mx-6 flex flex-row">
-      <left-label :imageUrl="courseImageUrl" :bgColor="courseColor" :textColor="courseColor"></left-label>
+      <left-label :iconName="courseIcon" :color="courseColor"></left-label>
       <right-course :course="course"></right-course>
     </div>
     <div class="border border-gray-300 mt-6"></div>  
 
     <!-- 排行榜 -->
     <div class="mt-8 mx-6 flex flex-row">
-      <left-label :imageUrl="rankImageUrl" :bgColor="rankColor" :textColor="rankColor"></left-label>
+      <left-label :iconName="rankIcon" :color="rankColor"></left-label>
       <div class="flex flex-col ml-16">
         <right-rank-label @whichClick="whichClick"></right-rank-label>
         <right-rank-card :isClick="isClick" :projectRank="projectRank" :docxRank="docxRank"></right-rank-card>
@@ -19,7 +19,7 @@
 
     <!-- 问答区 -->
     <div class="mt-8 mx-6 flex flex-row max-w-full">
-      <left-label :imageUrl="questionImageUrl" :bgColor="questionColor" :textColor="questionColor"></left-label>
+      <left-label :iconName="questionIcon" :color="questionColor"></left-label>
       <right-question :comment="comment"></right-question>
     </div>
   </div>
@@ -44,11 +44,11 @@ export default {
     return {
       name:"123",
       isClick:"",
-      courseImageUrl:require("../assets/书.svg"),
+      courseIcon:"thin-_book_writi",
       courseColor:"blue",
-      rankImageUrl:require("../assets/奖杯.svg"),
+      rankIcon:"trophy",
       rankColor:"red",
-      questionImageUrl:require("../assets/提问.svg"),
+      questionIcon:"yiwen",
       questionColor:"purple",
       course:[],
       projectRank:[{projectRank:"1",projectName:"创新实践课程系统",studentName:"某同学"},

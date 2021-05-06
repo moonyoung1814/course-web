@@ -1,11 +1,8 @@
 @font-face {
-  font-family: 'iconfont';  /* project id 2489974 */
-  src: url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.eot');
-  src: url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.woff') format('woff'),
-  url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_2489974_4a09jp3jg77.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* Project id 2489974 */
+  src: url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.woff2?t=1620272808330') format('woff2'),
+       url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.woff?t=1620272808330') format('woff'),
+       url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.ttf?t=1620272808330') format('truetype');
 }
 
 .iconfont {
@@ -56,3 +53,10 @@
   content: "\eb8b";
 }
 
+.icon-shoucang::before{
+  content:"\e61f"
+}
+
+.icon-sousuo:before {
+  content:"\e9f2"
+}

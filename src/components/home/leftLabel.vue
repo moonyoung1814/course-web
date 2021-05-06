@@ -1,13 +1,11 @@
 <template>
     <div>
-        <div class="w-36 h-72 flex flex-col items-center">
-        <div :class="['border','border-'+bgColor+'-300','bg-'+bgColor+'-400','w-32','h-64','rounded','flex','items-center','flex-col','py-12','shadow-md']">
-          <div class="w-16 h-32">
-            <img :src="imageUrl" alt="book">
+        <div class="w-36 flex flex-col items-center">
+          <div :class="['border','border-'+color+'-300','bg-'+color+'-400','w-32 h-64 rounded flex items-center flex-col py-12 shadow-md']">
+            <label :class="['icon-'+iconName,'text-'+color+'-600','iconfont text-6xl']" alt="book"></label>
+            <label class="text-base text-white mt-16">当前课程</label>
           </div>
-          <label class="text-base text-white">当前课程</label>
-        </div>
-        <label :class="['text-sm','text-'+textColor+'-500','tracking-wide','mt-6']">点击查看更多></label>
+          <label :class="['text-sm','text-'+color+'-500','tracking-wide','mt-6']">点击查看更多></label>
       </div>
     </div>
 </template>
@@ -15,9 +13,8 @@
 <script>
 export default {
     props:[
-        'imageUrl',
-        'bgColor',
-        'textColor'
+        'iconName',
+        'color'
     ],
     data(){
         return{

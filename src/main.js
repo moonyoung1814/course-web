@@ -12,7 +12,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import VueResource from 'vue-resource'
 import "tailwindcss/tailwind.css"
-import "../css/iconfont.css"
+
 
 Vue.config.productionTip = false
 

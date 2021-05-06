@@ -11,11 +11,11 @@
                 <div class="ml-6 self-center flex flex-col space-y-1">
                     <p class="text-sm text-black font-bold">{{item.name}}</p>
                     <p class="text-sm text-gray-800">{{item.content}}</p>
-                    <div class="flex">
+                    <div class="flex flex-row items-center">
                         <p class="text-xs text-gray-500">{{item.date}}&nbsp;{{item.time}}</p>
-                        <div class="flex" @click="Comment(item.id)">
-                            <img src="../../assets/回复.svg" alt="reponse" class="w-4 ml-3">
-                            <label class="text-xs text-gray-500 ml-0.5 self-end">回复</label>
+                        <div class="flex flex-row items-center ml-4" @click="Comment(item.id)">
+                            <label class="iconfont icon-huifu text-gray-600 text-base"></label>
+                            <label class="text-xs text-gray-500 ml-0.5">回复</label>
                         </div>
                     </div>
                 </div> 

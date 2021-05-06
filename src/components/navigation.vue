@@ -17,35 +17,40 @@
           </div>
         </div>
 
-        <div class="flex space-x-14">
-          <!-- inline-block 内联块级元素 -->
-          <div class="relative inline-block" @click="clickHead">
+        <div class="flex space-x-14 items-end">
+          <div class="flex flex-col items-center">
             <!-- 鼠标悬停过渡+变换 -->
-            <div class="border border-gray-50 rounded-full h-10 w-10 overflow-hidden 
-            transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-125" >
+            <div class="border border-gray-50 rounded-full h-10 w-10 overflow-hidden z-20
+            transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-125" @mouseover="overHead" @mouseout="outHead">
               <img :src="person.detail.image" alt="head" v-if="isImage == true">
               <img src="../assets/head.jpg" alt="head" v-else-if="isImage == false">
             </div>
-            <div class="ring-1 ring-black ring-opacity-5 rounded-md shadow-lg bg-white w-28 h-28 flex flex-col
-            justify-center z-10 absolute origin-top-right right-0 mt-1 divide-y divide-gray-100" v-show="isHeadOver">
-              <div class="flex flex-row self-center">
-                <img src="../assets/人.svg" alt="icon_person" class="w-5">
-                <label class="ml-1 py-2 text-sm text-gray-700" @click="skipToPerson">我的空间</label>
+            <!-- 头像卡片 -->
+            <div :class="['ring-1 ring-black ring-opacity-5 rounded-md shadow-lg bg-white w-28 h-28 flex flex-col',
+             'justify-center z-10 absolute mt-5 divide-y divide-gray-300 items-center transition duration-500 ease-in-out',
+             isHeadOver == isCardOver == true?'opacity-0':'opacity-100']" @mouseover="overCard" @mouseout="outCard">
+              <div class="flex flex-row items-center py-1">
+                <label class="iconfont icon-ren text-gray-600 text-base font-bold"></label>
+                <label class="ml-1 text-sm text-gray-700" @click="skipToPerson">我的空间</label>
               </div>
-              <div class="flex flex-row self-center">
-                <img src="../assets/退出.svg" alt="icon_exit" class="w-5">
-                <label class="ml-1 py-2 text-sm text-gray-700">退出登录</label>
+              <div class="flex flex-row items-center py-1">
+                <label class="iconfont icon-tuichu text-gray-600 text-base font-bold"></label>
+                <label class="ml-1 text-sm text-gray-700">退出登录</label>
               </div> 
             </div>
           </div>
-          <div class="border rounded-full h-10 w-10 overflow-hidden">
-            <img src="../assets/收藏.svg" alt="attention">
+          <!-- 关注图标 -->
+          <div>
+            <label class="iconfont icon-shoucang text-3xl"></label>
           </div>
         </div>
 
-        <div class="">
-          <input type="text" class="border border-gray-300 placeholder-gray-300 rounded-sm text-black 
-          w-56 h-8 text-center text-sm focus:outline-none focus:border-blue-300 focus:ring-2 shadow" placeholder="搜索">
+        <div class="w-56 h-8 flex items-center">
+          <div class="flex items-center">
+            <label class="iconfont icon-sousuo text-gray-700 text-base absolute font-bold origin-center mx-1"></label>
+          </div>
+          <input type="text" class="border border-gray-300 placeholder-gray-300 rounded-sm text-gray-700 
+          w-56 h-8 text-center text-sm focus:outline-none focus:border-blue-300 focus:ring-2 shadow px-4" placeholder="搜索">
         </div>
       </div> 
 
@@ -62,13 +67,23 @@ import axios from "axios"
         data(){
           return{
             isHeadOver:false,
+            isCardOver:false,
             person:[],
             isImage:false
           }
         },
         methods:{
-          clickHead:function(){
-            this.isHeadOver=!this.isHeadOver;
+          overHead:function(){
+            this.isHeadOver=true;
+          },
+          outHead:function(){
+            this.isHeadOver=false;
+          },
+          overCard:function(){
+            this.isCardOver=true;
+          },
+          outCard:function(){
+            this.isCardOver=false;
           },
           skipToClass:function(){
             this.$router.push('/class');
@@ -83,6 +98,10 @@ import axios from "axios"
           skipToPerson:function(){
              window.location.href = 'http://home.moonyoung.top';
           }
+        },
+        mounted:function(){
+          console.log(this.isHeadOver)
+          console.log(this.isCardOver)
         },
         async created() {
           //let person = (await axios.get('http://api.moonyoung.top/api/admin/account'))
