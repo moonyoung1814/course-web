@@ -2,14 +2,14 @@
   <div>
     <!-- 当前课程 -->
     <div class="mt-8 mx-6 flex flex-row">
-      <left-label :iconName="courseIcon" :color="courseColor"></left-label>
+      <left-label :iconName="courseIcon" :color="courseColor" :labelName="labelName[0]"></left-label>
       <right-course :course="course"></right-course>
     </div>
     <div class="border border-gray-300 mt-6"></div>  
 
     <!-- 排行榜 -->
     <div class="mt-8 mx-6 flex flex-row">
-      <left-label :iconName="rankIcon" :color="rankColor"></left-label>
+      <left-label :iconName="rankIcon" :color="rankColor" :labelName="labelName[1]"></left-label>
       <div class="flex flex-col ml-16">
         <right-rank-label @whichClick="whichClick"></right-rank-label>
         <right-rank-card :isClick="isClick" :projectRank="projectRank" :docxRank="docxRank"></right-rank-card>
@@ -19,7 +19,7 @@
 
     <!-- 问答区 -->
     <div class="mt-8 mx-6 flex flex-row max-w-full">
-      <left-label :iconName="questionIcon" :color="questionColor"></left-label>
+      <left-label :iconName="questionIcon" :color="questionColor" :labelName="labelName[2]"></left-label>
       <right-question :comment="comment"></right-question>
     </div>
   </div>
@@ -51,6 +51,7 @@ export default {
       questionIcon:"yiwen",
       questionColor:"purple",
       course:[],
+      labelName:["当前课程","排行榜","问答区"],
       projectRank:[{projectRank:"1",projectName:"创新实践课程系统",studentName:"某同学"},
       {projectRank:"2",projectName:"创新实践课程系统",studentName:"某同学"},
       {projectRank:"3",projectName:"创新实践课程系统",studentName:"某同学"},

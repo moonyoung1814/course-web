@@ -13,7 +13,7 @@
 
 <script>
 
-import Navigation from './components/navigation.vue'
+import Navigation from './components/navigation/navigation.vue'
 // import HelloWorld from './components/HelloWorld.vue'
 import "../css/iconfont.css"
 
