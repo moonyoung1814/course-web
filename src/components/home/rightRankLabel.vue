@@ -1,17 +1,17 @@
 <template>
     <div class="flex flex-col">
-        <div class="flex flex-row space-x-64 font-bold items-center max-w-full mx-16">
+        <div class="flex flex-row space-x-40 font-bold items-center max-w-full mx-20">
             <div>
-                <label class="text-lg" @click="clickProject">项目</label>
-                <div :class="['border border-red-500 max-w-full transition duration-500 ease-in-out',isClick == '1' ? 'opacity-100' :'opacity-0']"></div>  
+                <label class="text-lg mx-2" @click="clickProject">活跃项目</label>
+                <div :class="['border border-red-500 w-full transition duration-500 ease-in-out',isClick == '1' ? 'opacity-100' :'opacity-0']"></div>  
             </div>
             <div>
-                <label class="text-lg" @click="clickDocx">文档</label>
-                <div :class="['border border-red-500 max-w-full transition duration-500 ease-in-out',isClick == '2' ? 'opacity-100' :'opacity-0']"></div>  
+                <label class="text-lg mx-2" @click="clickDocx">最新文档</label>
+                <div :class="['border border-red-500 w-full transition duration-500 ease-in-out',isClick == '2' ? 'opacity-100' :'opacity-0']"></div>  
             </div>
             <div>
-                <label class="text-lg" @click="clickPerson">成员</label>
-                <div :class="['border border-red-500 max-w-full transition duration-500 ease-in-out',isClick == '3' ? 'opacity-100' :'opacity-0']"></div>
+                <label class="text-lg mx-2" @click="clickPerson">关注成员</label>
+                <div :class="['border border-red-500 w-full transition duration-500 ease-in-out',isClick == '3' ? 'opacity-100' :'opacity-0']"></div>
             </div>
         </div>
         <div class="border border-gray-200 mt-1"></div>
