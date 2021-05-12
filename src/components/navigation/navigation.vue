@@ -47,7 +47,8 @@
 import axios from "axios"
 import search from './search.vue';
 import HeadCard from './headCard.vue';
-    export default{
+import cookie from 'js-cookie';
+    export default {
       components: { search, HeadCard },
         props:[],
         data(){
@@ -94,22 +95,33 @@ import HeadCard from './headCard.vue';
           //let person = (await axios.get('http://api.moonyoung.top/api/admin/account'))
           //console.log(person)
           //this.person = person
-          var token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwidXNlcm5hbWUiOiJ0ZWFjaGVyIiwiaWQiOjEwLCJpYXQiOjE2MTk2MjA4MzksImV4cCI6MTYxOTg4MDAzOX0.ZaAOBzCdt65dguQQKY7Ynvex-XTi5NXLn4nvMUOFwVQ';
-          axios.get(
-          'http://api.moonyoung.top/api/admin/account',
-          {
-            headers:{
-              'Authorization' :'Bearer ' + token
-            }
-          })
-          .then(res => {
-            console.log(res.data.data);
-            this.person = res.data.data;
+          cookie.set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwiaWQiOjEwLCJkZXRhaWxfaWQiOjEsImlhdCI6MTYyMDc1NTg4NCwiZXhwIjoxNjIxMDE1MDg0fQ.MbdsdSbkIpi0l5NaHfM133yHACXQAkfmnD0iFmHW8Kc');
+          let token = cookie.get('token');
+          if(token) {
+            this.person = (await axios.get('http://api.moonyoung.top/api/admin/account',{
+              headers: {
+                'Authorization' : 'Bearer ' + token
+              }
+            })).data.data;
             this.isImage = true;
-          })
-          .catch(res =>{
-            console.log(res);
-          })
+
+          }
+          // var token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwidXNlcm5hbWUiOiJ0ZWFjaGVyIiwiaWQiOjEwLCJpYXQiOjE2MTk2MjA4MzksImV4cCI6MTYxOTg4MDAzOX0.ZaAOBzCdt65dguQQKY7Ynvex-XTi5NXLn4nvMUOFwVQ';
+          // axios.get(
+          // 'http://api.moonyoung.top/api/admin/account',
+          // {
+          //   headers:{
+          //     'Authorization' :'Bearer ' + token
+          //   }
+          // })
+          // .then(res => {
+          //   console.log(res.data.data);
+          //   this.person = res.data.data;
+          //   this.isImage = true;
+          // })
+          // .catch(res =>{
+          //   console.log(res);
+          // })
   } 
     }
 </script>
