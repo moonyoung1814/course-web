@@ -74,7 +74,6 @@ export default {
       .catch(err => {
         console.log(err)
       })
-        
   },
   methods:{
     whichClick:function(e){

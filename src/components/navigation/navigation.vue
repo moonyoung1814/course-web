@@ -95,7 +95,7 @@ import cookie from 'js-cookie';
           //let person = (await axios.get('http://api.moonyoung.top/api/admin/account'))
           //console.log(person)
           //this.person = person
-          cookie.set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwiaWQiOjEwLCJkZXRhaWxfaWQiOjEsImlhdCI6MTYyMDc1NTg4NCwiZXhwIjoxNjIxMDE1MDg0fQ.MbdsdSbkIpi0l5NaHfM133yHACXQAkfmnD0iFmHW8Kc');
+          // cookie.set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwiaWQiOjEwLCJkZXRhaWxfaWQiOjEsImlhdCI6MTYyMDc1NTg4NCwiZXhwIjoxNjIxMDE1MDg0fQ.MbdsdSbkIpi0l5NaHfM133yHACXQAkfmnD0iFmHW8Kc');
           let token = cookie.get('token');
           if(token) {
             this.person = (await axios.get('http://api.moonyoung.top/api/admin/account',{

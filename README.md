@@ -1,5 +1,7 @@
 # course-web
 
+本项目需要node版本>=12.13.0
+
 ## Project setup
 ```
 npm install
@@ -15,6 +17,8 @@ npm run dev
 npm run build
 npm run start
 ```
+
+
 
 
 
