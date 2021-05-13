@@ -66,15 +66,13 @@ export default {
       {id:"1",name:"某同学",content:"今天是几月几日？",date:"2021.04.01",time:"12:00",isResponse:false}]
     }
   },
-  created() {
-    getListAPI().then(res => {
-        this.course = res.data.data
-        console.log(this.course)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-        
+  needSerialize: true,
+  async created() {
+    if(getListAPI()){
+      let course = (await getListAPI()).data.data
+      this.course = course
+      console.log(this.course)
+    }
   },
   methods:{
     whichClick:function(e){

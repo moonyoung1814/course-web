@@ -28,14 +28,13 @@ export default {
             isPractice:""
         }
     },
-    created() {
-        getListAPI().then(res => {
-            this.course = res.data.data
-            console.log(this.course)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    needSerialize: true,
+    async created() {
+        if(getListAPI()){
+        let course = (await getListAPI()).data.data
+        this.course = course
+        console.log(this.course)
+    }
     },
     methods:{
         //父组件收到子组件传的值  
