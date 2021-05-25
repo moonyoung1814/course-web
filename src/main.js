@@ -10,11 +10,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import VueResource from 'vue-resource'
 import "tailwindcss/tailwind.css"
+
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+Vue.use(VueResource);
+
 
 // Export factory function
 export default function createApp () {
@@ -38,7 +42,42 @@ export default function createApp () {
       // }
       {
         path: '/',
-        component: () => import('./views/index.vue'),
+        component: () => import('./views/home.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/class',
+        component: () => import('./views/class.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/classList',
+        component: () => import('./views/classList.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/course',
+        component: () => import('./views/course.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/person',
+        component: () => import('./views/person.vue'),
+        meta: {
+          ssr: true
+        }
+      },
+      {
+        path: '/project',
+        component: () => import('./views/project.vue'),
         meta: {
           ssr: true
         }

@@ -12,12 +12,18 @@
     "@vapper/core": "^1.11.2",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "echarts": "^4.8.0",
+    "element-ui": "^2.15.1",
+    "js-cookie": "^2.2.1",
     "postcss-cli": "^8.3.1",
     "vue": "^2.6.12",
+    "vue-axios": "^3.2.4",
+    "vue-resource": "^1.5.2",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.4",
+    "@types/echarts": "^4.9.7",
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-eslint": "^4.5.11",
     "@vue/cli-service": "^4.5.11",

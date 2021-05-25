@@ -4,18 +4,25 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div> -->
   <div id="app">
-    <router-view/>
+    <div class="container mx-auto my-6 ">
+      <navigation/>
+      <router-view/>
+   </div> 
   </div>
 </template>
 
 <script>
+
+import Navigation from './components/navigation/navigation.vue'
 // import HelloWorld from './components/HelloWorld.vue'
+import "../css/iconfont.css"
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-  }
+
+    Navigation  }
 }
 </script>
 

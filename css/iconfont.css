@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'iconfont';  /* Project id 2489974 */
+  src: url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.woff2?t=1620272808330') format('woff2'),
+       url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.woff?t=1620272808330') format('woff'),
+       url('//at.alicdn.com/t/font_2489974_tg5fex6n80i.ttf?t=1620272808330') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yanjing:before {
+  content: "\e62b";
+}
+
+.icon-yiwen:before {
+  content: "\e65b";
+}
+
+.icon-icon-bainji:before {
+  content: "\e62e";
+}
+
+.icon-jiahao:before {
+  content: "\e607";
+}
+
+.icon-huifu:before {
+  content: "\e61a";
+}
+
+.icon-ren:before {
+  content: "\e6c5";
+}
+
+.icon-thin-_book_writi:before {
+  content: "\e602";
+}
+
+.icon-tuichu:before {
+  content: "\e72e";
+}
+
+.icon-fabu-:before {
+  content: "\e6be";
+}
+
+.icon-trophy:before {
+  content: "\eb8b";
+}
+
+.icon-shoucang::before{
+  content:"\e61f"
+}
+
+.icon-sousuo:before {
+  content:"\e9f2"
+}
