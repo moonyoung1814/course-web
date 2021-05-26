@@ -23,16 +23,16 @@ export default {
     },
     data(){
        return{
-           isClick:"",
-           c:"123",
-           project:[{projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"},
-           {projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"},
-           {projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"},
-           {projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"},
-           {projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"},
-           {projectName:"项目名",projectIntro:"这是项目简介这是项目简介这是项目简介",projectDocx:"目录一目录一"}],
-           members:[{id:"1",name:"导师"},{id:"2",name:"管理员"},{id:"2",name:"管理员"},
-           {id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"}]
+            isClick:"",
+            c:"123",
+            project:[{ projectId:1,projectName:"项目名1",projectIntro:"这是项目简介这是项目简介这是项目简介",
+            projectDocx:["这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息"]},{
+            projectId:2,projectName:"项目名2",projectIntro:"这是项目简介这是项目简介这是项目简介",
+            projectDocx:["这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息"]},{
+            projectId:3,projectName:"项目名3",projectIntro:"这是项目简介这是项目简介这是项目简介",
+            projectDocx:["这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息","这是项目详细信息"]}],
+            members:[{id:"1",name:"导师"},{id:"2",name:"管理员"},{id:"2",name:"管理员"},
+            {id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"},{id:"3",name:"成员"}]
        }
     },
     methods:{

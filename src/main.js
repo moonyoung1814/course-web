@@ -76,7 +76,8 @@ export default function createApp () {
         }
       },
       {
-        path: '/project',
+        path: '/project/:id',
+        name:'project',
         component: () => import('./views/project.vue'),
         meta: {
           ssr: true

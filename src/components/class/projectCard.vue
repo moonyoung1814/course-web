@@ -1,40 +1,35 @@
 <template>
-    <div class="ring-2 rounded shadow w-10/12 ml-8 px-8 pt-16 pb-8 relative" v-show="isClick == 1">
-        <div class="absolute right-4 top-4 w-16 flex flex-col">
-            <label :class="['iconfont icon-jiahao self-center',isCreate ? 'text-blue-900 text-4xl':'text-gray-500 text-3xl']" @click="createProject"></label>
-        </div>   
+    <div class="w-10/12 ml-8 px-8 relative" v-show="isClick == 1">
+        <create-notice @whichHover="whichHover"></create-notice> 
         <div class="grid grid-cols-3 gap-x-8 gap-y-4">
-            <div v-for="(item,index) in project" :key="index" class="relative inline-block p-4 ring-1 rounded" @click="skipToProject">
+            <div v-for="(item,index) in project" :key="index" class="relative p-4 ring-1 ring-gray-300 rounded-md shadow-md items-center flex flex-col " @click="skipToProject(item)">
+                <img src="../../assets/chalkboard.png" alt="项目封面">
                 <p class="text-base font-bold">{{item.projectName}}</p>
-                <div class="border border-gray-200 my-2 w-full"></div>
-                <p class="text-sm text-gray-500 w-11/12">{{item.projectIntro}}</p>
-                <div class="my-2 space-y-1">
-                    <p class="text-xs ">{{item.projectDocx}}</p>
-                    <p class="text-xs ">{{item.projectDocx}}</p>
-                    <p class="text-xs ">{{item.projectDocx}}</p>
-                </div>  
             </div> 
         </div>
     </div>
 </template>
 
 <script>
+import createNotice from './createNotice.vue';
 export default {
+  components: { createNotice },
     props:[
         'isClick',
         'project'
     ],
     data(){
         return{
-           isCreate:false
+           isHover:false,
         }
     },
     methods:{
-        skipToProject:function(){
-            this.$router.push('/project');
+        // 动态路由
+        skipToProject:function(project){
+            this.$router.push({name:'project',params:{id:project.projectId,project:project}});
         },
-        createProject:function(){
-            this.isCreate=!this.isCreate;
+        whichHover:function(e){
+            this.isHover = e
         }
     },
    
