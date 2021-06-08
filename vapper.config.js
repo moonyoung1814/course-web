@@ -1,4 +1,4 @@
 // vapper.config.js
 module.exports = {
-  port:2021
-}
+  port: 2021,
+};

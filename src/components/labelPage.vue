@@ -1,64 +1,60 @@
 <template>
-    <div>
-        <div class="px-7 ring-2 rounded shadow space-y-16 p-14">
-                <div class="block h-5"> 
-                    <label class="text-lg" @click="clickPractice_1">创一班</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out',isPractice == '1' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-                <div class="block h-5">
-                    <label class="text-lg" @click="clickPractice_2">创二班</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out',isPractice == '2' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-                <div class="block h-5">
-                    <label class="text-lg" @click="clickPractice_3">创三班</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out',isPractice == '3' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-                <div class="block h-5">
-                    <label class="text-lg" @click="clickPractice_4">创四班</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out',isPractice == '4' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-        </div>
+  <div class="px-6 ring-2 rounded-md shadow-md space-y-16 py-14">
+    <div
+      :class="[
+        'flex flex-none border-b-2 border-blue-500 transition duration-500 ease-in-out px-1',
+        isPractice == item.practiceNum
+          ? 'border-opacity-100'
+          : 'border-opacity-0',
+      ]"
+      v-for="(item, index) in practice"
+      :key="index"
+    >
+      <span
+        class="text-lg cursor-pointer flex flex-none"
+        @click="clickPractice(item.practiceNum)"
+        >{{ item.practiceName }}</span
+      >
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props:{
-        
-    },
-    data(){
-        return{
-            isPractice:"1"
+  props: ["practice"],
+  data() {
+    return {
+      isPractice: "1",
+    };
+  },
+  methods: {
+    clickPractice: function(e) {
+      switch (e) {
+        case 1: {
+          this.isPractice = "1";
+          this.$emit("whichPractice", "1");
+          break;
         }
-    },
-    methods:{
-        clickPractice_1:function(e){
-            this.isPractice="1"
-            e=this.isPractice
-            this.$emit('whichPractice',e)
-        },
-        clickPractice_2:function(e){
-            this.isPractice="2"
-            e=this.isPractice
-            this.$emit('whichPractice',e)
-        },
-        clickPractice_3:function(e){
-            this.isPractice="3"
-            e=this.isPractice
-            this.$emit('whichPractice',e)
-        },
-        clickPractice_4:function(e){
-            this.isPractice="4"
-            e=this.isPractice
-            this.$emit('whichPractice',e)
-            
+        case 2: {
+          this.isPractice = "2";
+          this.$emit("whichPractice", "2");
+          break;
         }
+        case 3: {
+          this.isPractice = "3";
+          this.$emit("whichPractice", "3");
+          break;
+        }
+        default: {
+          this.isPractice = "4";
+          this.$emit("whichPractice", "4");
+        }
+      }
     },
-    //初始值,子传父
-    mounted:function(e){
-        e=this.isPractice
-        this.$emit('whichPractice',e)
-    }
-}
-
+  },
+  //   初始值,子传父
+  mounted: function() {
+    this.$emit("whichPractice", this.isPractice);
+  },
+};
 </script>

@@ -1,22 +1,19 @@
 <template>
-    <div class="flex flex-col">
-        <div class="relative inline-block px-7 py-12 ring-2 rounded shadow w-32 h-80">
+    <div class="flex flex-col items-center w-2/12">
+        <div class="relative px-7 py-12 ring-2 rounded shadow w-full">
             <div class="space-y-16">
-                <div class="h-5"> 
-                    <label class="text-lg" @click="clickClassProjects">班级项目</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '1' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-                <div class="h-5">
+                <span :class="['h-5 border-b-2 border-blue-500 w-full transition duration-500 ease-in-out',isClick == '1' ? 'border-opacity-100' : 'border-opacity-0']"> 
+                    <label class="text-lg" @click="clickClassProjects">班级项目</label> 
+                </span>
+                <span :class="['h-5 border-b-2 border-blue-500 w-full transition duration-500 ease-in-out',isClick == '2' ? 'border-opacity-100' : 'border-opacity-0']"> 
                     <label class="text-lg" @click="clickClassMembers">班级成员</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '2' ? 'opacity-100' : 'opacity-0']"></div>  
-                </div>
-                <div class="h-5">
+                </span>
+                <span :class="['h-5 border-b-2 border-blue-500 w-full transition duration-500 ease-in-out',isClick == '3' ? 'border-opacity-100' : 'border-opacity-0']"> 
                     <label class="text-lg" @click="clickShareData">共享资料</label>
-                    <div :class="['border border-blue-500 w-full transition duration-500 ease-in-out', isClick == '3' ? 'opacity-100' : 'opacity-0']"></div>
-                </div>
+                </span>
             </div>
         </div>
-        <label class="text-sm text-blue-500 tracking-wide mt-8" @click="skipToClassList">>点击进入其他班级</label>
+        <label class="text-sm text-blue-500 tracking-wide mt-8" @click="skipToClassList">>返回所有班级</label>
     </div>
 </template>
 
@@ -47,7 +44,7 @@ export default {
             this.$emit('whichClick',isClick_)
         },
         skipToClassList:function(){
-            this.$router.push('/classList');
+            this.$router.go(-1);
         },
         skipToProject:function(){
             this.$router.push('/project');

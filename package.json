@@ -13,16 +13,19 @@
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
     "echarts": "^4.8.0",
-    "element-ui": "^2.15.1",
+    "element-ui": "^2.15.2",
     "js-cookie": "^2.2.1",
     "postcss-cli": "^8.3.1",
+    "qs": "^6.10.1",
     "vue": "^2.6.12",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.4",
     "vue-resource": "^1.5.2",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.4",
+    "@tailwindcss/postcss7-compat": "^2.1.2",
     "@types/echarts": "^4.9.7",
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-eslint": "^4.5.11",
@@ -33,7 +36,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "postcss": "^7.0.35",
     "postcss-loader": "^5.2.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
+    "swiper": "^3.4.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {

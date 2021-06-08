@@ -7,93 +7,88 @@
 //   render: h => h(App),
 // }).$mount('#app')
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from './App.vue'
-import VueResource from 'vue-resource'
-import "tailwindcss/tailwind.css"
+import Vue from "vue";
+import App from "./App.vue";
+import VueResource from "vue-resource";
+import VueRouter from "vue-router";
+import "../css/tailwind.css";
+import api from "./utils";
+import store from "./store/index";
+import VueAwesomeSwiper from "vue-awesome-swiper";
 
+Vue.config.productionTip = false;
 
-Vue.config.productionTip = false
+// 将api挂载到vue的原型上
+Vue.prototype.$api = api;
 
-Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(VueRouter);
+Vue.use(VueAwesomeSwiper);
 
-
-// Export factory function
-export default function createApp () {
+export default function createApp() {
   // 1. Create a router instance
   const router = new VueRouter({
-    mode: 'history',
+    mode: "history",
     routes: [
-      // {
-      //   path: '/',
-      //   component: () => import('./components/HelloWorld.vue'),
-      //   meta: {
-      //     ssr: true
-      //   }
-      // },
-      // {
-      //   path: '/csr',
-      //   component: () => import('./components/csr.vue'),
-      //   meta: {
-      //     ssr: false
-      //   }
-      // }
       {
-        path: '/',
-        component: () => import('./views/home.vue'),
+        path: "/",
+        component: () => import("./views/home.vue"),
         meta: {
-          ssr: true
-        }
+          ssr: true,
+        },
       },
       {
-        path: '/class',
-        component: () => import('./views/class.vue'),
+        path: "/class/:id",
+        name: "class",
+        component: () => import("./views/class.vue"),
         meta: {
-          ssr: true
-        }
+          ssr: true,
+        },
       },
       {
-        path: '/classList',
-        component: () => import('./views/classList.vue'),
+        path: "/classList",
+        name: "classList",
+        component: () => import("./views/classList.vue"),
         meta: {
-          ssr: true
-        }
+          ssr: true,
+        },
       },
       {
-        path: '/course',
-        component: () => import('./views/course.vue'),
+        path: "/course",
+        name: "course",
+        component: () => import("./views/course.vue"),
         meta: {
-          ssr: true
-        }
+          ssr: true,
+        },
       },
       {
-        path: '/person',
-        component: () => import('./views/person.vue'),
+        path: "/person",
+        name: "person",
+        component: () => import("./views/person.vue"),
         meta: {
-          ssr: true
-        }
+          ssr: true,
+        },
       },
       {
-        path: '/project/:id',
-        name:'project',
-        component: () => import('./views/project.vue'),
+        path: "/project/:id",
+        name: "project",
+        component: () => import("./views/project.vue"),
         meta: {
-          ssr: true
-        }
-      }
-    ]
-  })
+          ssr: true,
+        },
+      },
+    ],
+  });
 
   // 2. Create a root component
   const app = {
     router,
+    store,
     // This is necessary, it is for vue-meta
     head: {},
-    render: h => h(App)
-  }
+    render: (h) => h(App),
+  };
 
   // 3. return the root component
-  return app
+  return app;
 }
