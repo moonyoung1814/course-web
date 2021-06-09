@@ -12,9 +12,12 @@
       <p class="text-sm text-gray-800">{{ ask.content }}</p>
       <div class="flex flex-row items-center">
         <p class="text-xs text-gray-500">{{ ask.date }}&nbsp;{{ ask.time }}</p>
-        <div class="flex flex-row items-center ml-4" @click="answer(ask.id)">
-          <label class="iconfont icon-huifu text-gray-600 text-base"></label>
-          <label class="text-xs text-gray-500 ml-0.5">回复</label>
+        <div
+          class="flex flex-row items-center ml-4 cursor-pointer"
+          @click="answer(ask.id)"
+        >
+          <span class="iconfont icon-huifu text-gray-600 text-base"></span>
+          <span class="text-xs text-gray-500 ml-0.5">回复</span>
         </div>
       </div>
     </div>

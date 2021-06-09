@@ -2,7 +2,7 @@
   <div>
     <div v-for="(item, index) in classList" :key="index" class="cursor-pointer">
       <div
-        class="flex flex-row ring-2 rounded-md shadow-lg p-4 mb-4"
+        class="flex flex-row rounded-md shadow-md p-4 mb-4 bg-white border-0"
         v-if="item.id"
         @click="skipToClass(item.id)"
       >

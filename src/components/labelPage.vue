@@ -1,21 +1,22 @@
 <template>
-  <div class="px-6 ring-2 rounded-md shadow-md space-y-16 py-14">
-    <div
+  <div class="rounded-md shadow-md space-y-10 py-12 h-full bg-white border-0">
+    <ul
       :class="[
-        'flex flex-none border-b-2 border-blue-500 transition duration-500 ease-in-out px-1',
+        'flex flex-none border-l-2 border-blue-500 border-r-0 transition duration-500 ease-in-out pl-4 pr-8 py-2 list-none',
         isPractice == item.practiceNum
-          ? 'border-opacity-100'
-          : 'border-opacity-0',
+          ? 'border-opacity-100 bg-gray-100 font-bold'
+          : 'border-opacity-0 bg-white ',
       ]"
       v-for="(item, index) in practice"
       :key="index"
     >
-      <span
-        class="text-lg cursor-pointer flex flex-none"
+      <li
+        class="text-xs cursor-pointer flex flex-none tracking-wider"
         @click="clickPractice(item.practiceNum)"
-        >{{ item.practiceName }}</span
       >
-    </div>
+        {{ item.practiceName }}
+      </li>
+    </ul>
   </div>
 </template>
 

@@ -1,72 +1,64 @@
 <template>
-  <div>
-    <nav>
-      <div class="flex items-end justify-between">
-        <p class="text-3xl font-bold tracking-wider">Course</p>
-
-        <div class="flex xl:space-x-14 md:space-x-7 flex-none">
-          <span
-            class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
-            @click.stop="skipToIndex"
-            >首页</span
-          >
-          <span
-            class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
-            @click.stop="skipToCourse"
-            >课程</span
-          >
-          <span
-            class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
-            @click.stop="skipToClass"
-            >班级</span
-          >
+  <div
+    class="flex flex-none items-center border border-gray-100 shadow rounded-b px-2 relative w-screen h-16 bg-white"
+  >
+    <div class="flex items-end justify-around w-full">
+      <!-- title -->
+      <span class="text-3xl font-bold tracking-wider">Course</span>
+      <!-- 首页+班级+标签导航 -->
+      <ul class="list-none flex flex-row flex-none justify-around w-3/12 px-4">
+        <li
+          class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
+          @click.stop="skipToIndex"
+        >
+          首页
+        </li>
+        <li
+          class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
+          @click.stop="skipToCourse"
+        >
+          课程
+        </li>
+        <li
+          class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
+          @click.stop="skipToClass"
+        >
+          班级
+        </li>
+      </ul>
+      <!-- 头像+关注图标 -->
+      <div
+        class="flex flex-col items-center"
+        @mouseenter="overHead"
+        @mouseleave="outHead"
+      >
+        <!-- 头像 -->
+        <div
+          :class="[
+            'border border-gray-100 shadow rounded-full h-8 w-8 overflow-hidden z-20 transition duration-300 ease-in-out transform-gpu cursor-pointer',
+            isHeadOver ? '-translate-y-1 scale-125' : '',
+          ]"
+        >
+          <img :src="person.detail.image" alt="head" v-if="isImage == true" />
+          <img
+            src="../../assets/head.jpg"
+            alt="head"
+            v-else-if="isImage == false"
+          />
         </div>
-
-        <div class="flex xl:space-x-14 md:space-x-7 items-end">
-          <div
-            class="flex flex-col items-center"
-            @mouseenter="overHead"
-            @mouseleave="outHead"
-          >
-            <!-- 头像 -->
-            <div
-              :class="[
-                'border border-gray-50 rounded-full h-10 w-10 overflow-hidden z-20 transition duration-300 ease-in-out transform cursor-pointer',
-                isHeadOver ? '-translate-y-1 scale-125' : '',
-              ]"
-            >
-              <img
-                :src="person.detail.image"
-                alt="head"
-                v-if="isImage == true"
-              />
-              <img
-                src="../../assets/head.jpg"
-                alt="head"
-                v-else-if="isImage == false"
-              />
-            </div>
-            <!-- 头像卡片 -->
-            <head-card
-              :isHeadOver="isHeadOver"
-              :label="label"
-              :class="[
-                'transition duration-500 ease-in-out',
-                isHeadOver ? 'visible opacity-100' : 'invisible opacity-0',
-              ]"
-            ></head-card>
-          </div>
-          <!-- 关注图标 -->
-          <div>
-            <label class="iconfont icon-shoucang text-3xl"></label>
-          </div>
-        </div>
-        <!-- 搜索框 -->
-        <search @searchCheck="searchCheck"></search>
+        <!-- 头像卡片 -->
+        <head-card
+          :isHeadOver="isHeadOver"
+          :label="label"
+          :class="[
+            'transition duration-300 ease-in-out transform-gpu origin-top',
+            isHeadOver ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0',
+          ]"
+        ></head-card>
       </div>
-
-      <div class="border border-gray-300 mt-6"></div>
-    </nav>
+      <!-- 搜索框 -->
+      <search @searchCheck="searchCheck"></search>
+    </div>
   </div>
 </template>
 

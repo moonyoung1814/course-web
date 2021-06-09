@@ -1,26 +1,17 @@
 <template>
-  <div class="w-10/12 relative" v-show="isClick == 1">
+  <div class="w-full relative pl-6 pr-10" v-show="isClick == 1">
     <create-notice @whichHover="whichHover"></create-notice>
-    <div class="grid grid-cols-3 gap-x-8 gap-y-4 mx-8 w-full">
+    <div class="grid grid-cols-3 gap-x-8 gap-y-4 w-full">
       <div
         v-for="(item, index) in project"
         :key="index"
-        class="relative p-4 ring-2 ring-gray-300 rounded-md shadow-lg items-center flex flex-col w-full"
+        class="relative p-4 border-0 bg-white rounded-md shadow-md items-center flex flex-col w-full"
       >
-        <!-- 轮播图 -->
-        <swiper
-          ref="mySwiper"
-          :options="swiperOptions"
-          class="w-full ring-1 shadow-md rounded-sm"
-        >
-          <swiper-slide
-            v-for="(_item, _index) in item.images"
-            :key="'a' + _index"
-          >
-            <img :src="getImages(_item)" alt="项目封面" class="h-32 w-full" />
-          </swiper-slide>
-        </swiper>
-
+        <img
+          :src="item.images[0]"
+          alt="项目封面"
+          class="h-32 w-full border-gray-100 rounded shadow"
+        />
         <span
           class="text-base font-bold mt-6 cursor-pointer"
           @click="skipToProject(item)"
@@ -32,36 +23,16 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "../../../node_modules/swiper/dist/css/swiper.css";
 import createNotice from "./createNotice.vue";
 export default {
-  components: { createNotice, Swiper, SwiperSlide },
+  components: { createNotice },
   props: ["isClick", "project"],
   data() {
     return {
       isHover: false,
-      // swiper配置
-      swiperOptions: {
-        notNextTick: true,
-        //循环
-        loop: true,
-        //自动播放+延迟时间
-        autoplay: 1000,
-        // 设置轮播
-        effect: "fade",
-        //滑动速度
-        speed: 1000,
-        //滑动方向
-        direction: "horizontal",
-        //分页器设置
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      },
     };
   },
+  mounted() {},
 
   methods: {
     // 动态路由
@@ -83,6 +54,5 @@ export default {
       }
     },
   },
-  mounted() {},
 };
 </script>

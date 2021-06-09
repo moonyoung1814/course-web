@@ -1,24 +1,24 @@
 <template>
   <div
     :class="[
-      'ring-1 ring-black ring-opacity-5 rounded-md shadow-lg bg-white w-28 h-28 flex flex-col',
-      'justify-center z-10 absolute mt-5 divide-y divide-gray-300 items-center',
+      'border border-gray-100 rounded-md shadow-md bg-white w-28 h-28 flex flex-col',
+      'justify-center items-center z-10 absolute mt-4 divide-y divide-gray-300 ',
     ]"
   >
     <div
-      class="flex flex-row items-center py-1 cursor-pointer"
+      class="flex flex-row items-center p-1 cursor-pointer text-gray-600 hover:text-blue-500 transition ease-in-out duration-500 transform-gpu scale-90 hover:scale-100"
       v-for="(item, index) in label"
       :key="index"
       @click="skip(item.fun)"
     >
       <span
         :class="[
-          'iconfont',
+          'iconfont ',
           'icon-' + item.iconName,
-          'text-gray-600 text-base font-semibold',
+          'text-base font-semibold',
         ]"
       ></span>
-      <span class="ml-1 text-sm text-gray-700">{{ item.name }}</span>
+      <span class="ml-1 text-base">{{ item.name }}</span>
     </div>
   </div>
 </template>

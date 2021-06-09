@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-screen mt-4 mx-4">
     <!-- 右侧标签页 -->
-    <div class="flex flex-row mx-8 mt-8">
+    <div class="flex flex-row">
       <label-page
         @whichPractice="whichClick"
         :practice="label"

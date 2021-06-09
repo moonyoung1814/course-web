@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- 当前课程 -->
-    <div class="mt-8 mx-6 flex flex-row">
+    <div
+      class="mt-4 p-6 flex flex-row bg-white border border-white border-opacity-0 shadow-md rounded-md"
+    >
       <left-label
         :iconName="courseIcon"
         :color="courseColor"
@@ -9,10 +11,11 @@
       ></left-label>
       <right-course :course="course"></right-course>
     </div>
-    <div class="border border-gray-300 mt-6"></div>
 
     <!-- 排行榜 -->
-    <div class="mt-8 mx-6 flex flex-row">
+    <div
+      class="mt-4 p-6 flex flex-row bg-white border border-white border-opacity-0 shadow-md rounded-md"
+    >
       <left-label
         :iconName="rankIcon"
         :color="rankColor"
@@ -20,10 +23,11 @@
       ></left-label>
       <right-rank :projectRank="projectRank" :docxRank="docxRank"></right-rank>
     </div>
-    <div class="border border-gray-200 mt-6"></div>
 
     <!-- 问答区 -->
-    <div class="mt-8 mx-6 flex flex-row max-w-full">
+    <div
+      class="mt-4 p-6 flex flex-row bg-white border border-white border-opacity-0 shadow-md rounded-md"
+    >
       <left-label
         :iconName="questionIcon"
         :color="questionColor"

@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="flex flex-row mx-8 mt-8 relative">
+  <div class="h-screen mt-4 mx-4">
+    <div class="flex flex-row relative">
       <!-- 左侧标签页 -->
       <label-page
         :practice="practice"
         @whichPractice="whichPractice"
       ></label-page>
       <!-- 右侧班级列表 -->
-      <div class="w-10/12 ml-8 relative flex flex-col">
+      <div class="w-full ml-6 relative flex flex-col">
         <class-card
           :classList="classList"
           v-show="isPractice == 1"

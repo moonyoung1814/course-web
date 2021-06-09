@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex flex-row mx-8 mt-8 relative">
+  <div class="h-screen mt-4 mx-4">
+    <div class="flex flex-row relative">
       <!-- 左侧标签页 -->
       <!-- 子组件向父组件传值 -->
       <label-page
@@ -29,10 +29,10 @@ export default {
       teacher: [],
       isPractice: "",
       practice: [
-        { practiceNum: 1, practiceName: "创一班" },
-        { practiceNum: 2, practiceName: "创二班" },
-        { practiceNum: 3, practiceName: "创三班" },
-        { practiceNum: 4, practiceName: "创四班" },
+        { practiceNum: 1, practiceName: "创新实践一" },
+        { practiceNum: 2, practiceName: "创新实践二" },
+        { practiceNum: 3, practiceName: "创新实践三" },
+        { practiceNum: 4, practiceName: "创新实践四" },
       ],
     };
   },
