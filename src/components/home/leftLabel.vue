@@ -8,14 +8,14 @@
         'rounded flex items-center flex-col py-12 shadow-md px-8',
       ]"
     >
-      <label
+      <span
         :class="[
           'icon-' + iconName,
           'text-' + color + '-600',
           'iconfont text-6xl',
         ]"
         alt="book"
-      ></label>
+      ></span>
       <label class="text-base text-white mt-16">{{ labelName }}</label>
     </div>
     <label

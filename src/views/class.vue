@@ -10,7 +10,11 @@
       <!-- 项目卡片 -->
       <project-card :isClick="isClick" :project="project"></project-card>
       <!-- 成员卡片 -->
-      <members-card :isClick="isClick" :members="members"></members-card>
+      <members-card
+        :isClick="isClick"
+        :student="student"
+        :teacher="teacher"
+      ></members-card>
     </div>
   </div>
 </template>
@@ -31,16 +35,9 @@ export default {
       isClick: "",
       c: "123",
       project: [],
-      members: [
-        { id: "1", name: "导师" },
-        { id: "2", name: "管理员" },
-        { id: "2", name: "管理员" },
-        { id: "3", name: "成员" },
-        { id: "3", name: "成员" },
-        { id: "3", name: "成员" },
-        { id: "3", name: "成员" },
-        { id: "3", name: "成员" },
-      ],
+      members: [],
+      student: [],
+      teacher: [],
       label: [
         {
           practiceNum: 1,
@@ -59,9 +56,14 @@ export default {
   },
   needSerialize: true,
   async created() {
-    if (this.$api.projectList.getProjectList()) {
-      this.project = (await this.$api.projectList.getProjectList()).data.data;
+    if (this.$api.program.getProjectList()) {
+      this.project = (await this.$api.program.getProjectList()).data.data;
       console.log(this.project);
+    }
+    if (this.$api.program.getMembers()) {
+      let members = (await this.$api.program.getMembers()).data.data;
+      this.student = members[0].student;
+      this.teacher = members[0].teacher;
     }
   },
   mounted() {},
@@ -70,7 +72,14 @@ export default {
       this.isClick = e;
       console.log(this.isClick);
     },
-    async function() {},
+    async getProjectList() {},
+    async getMembers() {
+      if (this.$api.member.getMembers()) {
+        let members = (await this.$api.member.getMembers()).data.data;
+        this.student = members[0].student;
+        this.teacher = members[0].teacher;
+      }
+    },
   },
 };
 </script>

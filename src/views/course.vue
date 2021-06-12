@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen mt-4 mx-4">
+  <div class="min-h-screen mt-4 mx-4">
     <div class="flex flex-row relative">
       <!-- 左侧标签页 -->
       <!-- 子组件向父组件传值 -->
@@ -17,7 +17,7 @@
 <script>
 // 组件化
 import LabelPage from "../components/labelPage.vue";
-import CourseList from "../components/courseList.vue";
+import CourseList from "../components/course/courseList.vue";
 export default {
   components: {
     LabelPage,

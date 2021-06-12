@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div> -->
-  <div id="app" class="m-0 p-0 bg-gray-100 h-full overscroll-auto">
+  <div id="app" class="m-0 p-0 bg-gray-100">
     <navigation />
     <div class="container mx-auto">
       <router-view />

@@ -1,14 +1,16 @@
 <template>
   <div class="w-full relative pl-6 pr-10" v-show="isClick == 1">
     <create-notice @whichHover="whichHover"></create-notice>
-    <div class="grid grid-cols-3 gap-x-8 gap-y-4 w-full">
+    <div
+      class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-4 w-full"
+    >
       <div
         v-for="(item, index) in project"
         :key="index"
         class="relative p-4 border-0 bg-white rounded-md shadow-md items-center flex flex-col w-full"
       >
         <img
-          :src="item.images[0]"
+          :src="getImages(item.images[0])"
           alt="项目封面"
           class="h-32 w-full border-gray-100 rounded shadow"
         />
@@ -30,6 +32,7 @@ export default {
   data() {
     return {
       isHover: false,
+      imagUrl: require("../../assets/chalkboard_1.png"),
     };
   },
   mounted() {},
@@ -48,7 +51,9 @@ export default {
     },
     // 将图片url加入缓存网址
     getImages(_url) {
-      if (_url !== undefined) {
+      if (_url == undefined || _url == null) {
+        return this.imagUrl;
+      } else {
         let _u = _url.substring(7);
         return "https://images.weserv.nl/?url=" + _u;
       }

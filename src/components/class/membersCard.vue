@@ -1,47 +1,37 @@
 <template>
   <div
-    class="border-0 bg-white rounded-md shadow-md w-full ml-6 p-8 grid grid-cols-2 gap-4"
+    class="border-0 bg-white rounded-md shadow-md w-full ml-6 px-8 py-4 grid lg:grid-cols-2 grid-cols-1 gap-4"
     v-show="isClick == 2"
   >
     <div class="flex flex-col">
-      <label for="" class="text-base font-bold ">导师</label>
-      <div v-for="(item, index) in members" :key="'a' + index">
-        <div class="flex flex-col" v-if="item.id === '1'">
-          <div class="flex flex-row my-2 ring-1 rounded shadow p-2">
-            <img
-              src="../../assets/head.jpg"
-              alt="head"
-              class="ring-1 w-8 rounded-full overflow-hidden"
-            />
-            <p class="text-sm ml-3 self-center">{{ item.name }}</p>
-          </div>
-        </div>
-      </div>
-      <label class="text-base font-bold">管理员</label>
-      <div v-for="(item, index) in members" :key="'b' + index">
-        <div class="flex flex-col" v-if="item.id === '2'">
-          <div class="flex flex-row my-2 ring-1 rounded shadow p-2">
-            <img
-              src="../../assets/head.jpg"
-              alt="head"
-              class="ring-1 w-8 rounded-full overflow-hidden"
-            />
-            <p class="text-sm ml-3 self-center">{{ item.name }}</p>
-          </div>
-        </div>
+      <span class="text-base font-bold ">导师</span>
+      <div class="flex flex-row my-2 border rounded shadow p-2">
+        <img
+          :src="teacher.image"
+          alt="导师头像"
+          class="border w-10 rounded-full overflow-hidden"
+        />
+        <p class="text-sm ml-3 self-center">{{ teacher.name }}</p>
       </div>
     </div>
     <div class="flex flex-col">
-      <label class="text-base font-bold">成员</label>
-      <div v-for="(item, index) in members" :key="'c' + index">
-        <div class="flex flex-col" v-if="item.id === '3'">
-          <div class="flex flex-row my-2 ring-1 rounded shadow p-2">
-            <img
-              src="../../assets/head.jpg"
-              alt="head"
-              class="ring-1 w-8 rounded-full overflow-hidden"
-            />
-            <p class="text-sm ml-3 self-center">{{ item.name }}</p>
+      <span class="text-base font-bold">成员</span>
+      <div
+        v-for="(item, index) in student"
+        :key="'c' + index"
+        class="flex flex-col"
+      >
+        <div
+          class="flex flex-row my-2 border rounded shadow p-2 items-center w-full"
+        >
+          <img
+            :src="getImages(item.image)"
+            alt="学生头像"
+            class="border w-10 rounded-full overflow-hidden"
+          />
+          <div class="flex flex-col ml-3 w-full ">
+            <p class="text-sm">{{ item.name }}</p>
+            <p class="text-xs text-gray-300">{{ item.intro }}</p>
           </div>
         </div>
       </div>
@@ -51,10 +41,22 @@
 
 <script>
 export default {
-  props: ["isClick", "members"],
+  props: ["isClick", "student", "teacher"],
   data() {
-    return {};
+    return {
+      imagUrl: require("../../assets/head.jpg"),
+    };
   },
-  methods: {},
+  methods: {
+    // 将图片url加入缓存网址
+    getImages(_url) {
+      if (_url == undefined || _url == null) {
+        return this.imagUrl;
+      } else {
+        let _u = _url.substring(8);
+        return "https://images.weserv.nl/?url=" + _u;
+      }
+    },
+  },
 };
 </script>
