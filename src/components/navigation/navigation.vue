@@ -2,7 +2,7 @@
   <div
     class="flex flex-none items-center border border-gray-100 shadow rounded-b px-2 relative w-screen h-16 bg-white"
   >
-    <div class="flex items-end justify-around w-full">
+    <div class="flex items-center justify-around w-full">
       <!-- title -->
       <h1 class="text-3xl font-bold tracking-widest">Course</h1>
       <!-- 首页+班级+标签导航 -->
