@@ -32,6 +32,7 @@ export default function createApp() {
     routes: [
       {
         path: "/",
+        name: "home",
         component: () => import("./views/home.vue"),
         meta: {
           ssr: true,

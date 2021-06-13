@@ -4,7 +4,7 @@
   >
     <div class="flex items-end justify-around w-full">
       <!-- title -->
-      <span class="text-3xl font-bold tracking-wider">Course</span>
+      <h1 class="text-3xl font-bold tracking-widest">Course</h1>
       <!-- 首页+班级+标签导航 -->
       <ul class="list-none flex flex-row flex-none justify-around w-3/12 px-4">
         <li
@@ -21,7 +21,7 @@
         </li>
         <li
           class="text-xl cursor-pointer hover:text-blue-500 transition ease-in-out duration-500"
-          @click.stop="skipToClass"
+          @click.stop="skipToClassList"
         >
           班级
         </li>
@@ -70,6 +70,7 @@ import cookie from "js-cookie";
 export default {
   components: { search, HeadCard },
   props: [],
+  inject: ["reload"],
   data() {
     return {
       isHeadOver: false,
@@ -96,23 +97,43 @@ export default {
       this.searchContent = e;
       console.log(this.searchContent);
     },
-    skipToClass: function() {
-      this.$router.push("/classList");
+    skipToClassList: function() {
+      if (this.$route.name == "classList") {
+        this.reload();
+        this.titleAnimation();
+      } else this.$router.push("/classList");
     },
     skipToIndex: function() {
-      this.$router.push("/");
+      if (this.$route.name == "home") {
+        this.reload();
+        this.titleAnimation();
+      } else this.$router.push("/");
     },
     skipToCourse: function() {
-      this.$router.push("/course");
+      if (this.$route.name == "course") {
+        this.reload();
+        this.titleAnimation();
+      } else this.$router.push("/course");
+    },
+    // 标题动画
+    titleAnimation: function() {
+      const h1 = document.querySelector("h1");
+      h1.innerHTML = h1.textContent.replace(/\S/g, "<span>$&</span>");
+      document.querySelectorAll("span").forEach((span, index) => {
+        span.style.setProperty("--delay", `${index * 0.1}s`);
+      });
     },
   },
-  mounted() {},
+  // watch用于观察和监听页面上的vue实例，当你需要在数据变化响应时，执行异步操作，或高性能消耗的操作，那么watch为最佳选择
+  // 每当路由改变时触发标题动画
+  watch: {
+    $route: "titleAnimation",
+  },
+  mounted() {
+    this.titleAnimation();
+  },
   needSerialize: true,
   async created() {
-    //let person = (await axios.get('http://api.moonyoung.top/api/admin/account'))
-    //console.log(person)
-    //this.person = person
-    // cookie.set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwiaWQiOjEwLCJkZXRhaWxfaWQiOjEsImlhdCI6MTYyMDc1NTg4NCwiZXhwIjoxNjIxMDE1MDg0fQ.MbdsdSbkIpi0l5NaHfM133yHACXQAkfmnD0iFmHW8Kc');
     let token = cookie.get("token");
     if (token) {
       this.person = (
@@ -125,24 +146,25 @@ export default {
       console.log(this.person);
       this.isImage = true;
     }
-    // var token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi5a-85biIIiwidXNlcm5hbWUiOiJ0ZWFjaGVyIiwiaWQiOjEwLCJpYXQiOjE2MTk2MjA4MzksImV4cCI6MTYxOTg4MDAzOX0.ZaAOBzCdt65dguQQKY7Ynvex-XTi5NXLn4nvMUOFwVQ';
-    // axios.get(
-    // 'http://api.moonyoung.top/api/admin/account',
-    // {
-    //   headers:{
-    //     'Authorization' :'Bearer ' + token
-    //   }
-    // })
-    // .then(res => {
-    //   console.log(res.data.data);
-    //   this.person = res.data.data;
-    //   this.isImage = true;
-    // })
-    // .catch(res =>{
-    //   console.log(res);
-    // })
   },
 };
 </script>
 
-<style></style>
+<style>
+/* h1的span组件 */
+h1 span {
+  display: inline-block;
+  animation: 0.4s jump ease-in-out;
+  animation-delay: var(--delay);
+}
+/* 设置动画 */
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+</style>
